@@ -113,7 +113,7 @@ def should_notify(
 ) -> tuple[bool, str]:
     if price > threshold:
         return False, "por encima del umbral"
-    if not prev or prev.get("last_price") is None:
+    if not prev or prev.get("last_notified_at") is None or prev.get("last_price") is None:
         return True, "primer aviso"
     last_price = float(prev["last_price"])
     if last_price > threshold:
@@ -262,7 +262,10 @@ def main() -> int:
             "last_notified_price": prev.get("last_notified_price"),
         }
 
-    save_state(state_path, state)
+    if args.dry_run:
+        log("[dry-run] no se guarda el estado")
+    else:
+        save_state(state_path, state)
     log(f"Listo: {successes} ok, {failures} con problemas.")
     return 1 if successes == 0 and failures > 0 else 0
 
