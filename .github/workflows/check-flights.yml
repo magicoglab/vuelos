@@ -2,8 +2,10 @@ name: Check flight prices
 
 on:
   schedule:
-    # Cada 6 horas (UTC). Ajusta el intervalo a tu gusto (minimo 5 min).
-    - cron: "0 */6 * * *"
+    # Una vez por dia (12:00 UTC). Ojo con la cuota: SerpAPI free = 100 busquedas/mes.
+    # Cada corrida gasta 1 busqueda por cada ruta del config.yml.
+    # 1 vez/dia con 2 rutas = ~60/mes. Para mas frecuencia, pasa a plan pago.
+    - cron: "0 12 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
