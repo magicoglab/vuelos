@@ -79,6 +79,18 @@ def build_params(api_key: str, check: dict, cfg: dict, defaults: dict) -> dict:
         params["type"] = 2
     if cabin in CABIN_MAP:
         params["travel_class"] = CABIN_MAP[cabin]
+    bags = check.get("bags", defaults.get("bags", 0))
+    if int(bags) > 0:
+        params["bags"] = int(bags)
+    if check.get("max_price") is not None:
+        params["max_price"] = int(check["max_price"])
+    outbound_times = check.get("outbound_times")
+    if not outbound_times and check.get("depart_after"):
+        start = int(str(check["depart_after"]).split(":")[0])
+        end = int(str(check.get("depart_before", "23:59")).split(":")[0])
+        outbound_times = f"{start},{end}"
+    if outbound_times:
+        params["outbound_times"] = str(outbound_times)
     return params
 
 
