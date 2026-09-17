@@ -1,0 +1,15 @@
+name: SerpAPI quota
+
+on:
+  workflow_dispatch:
+
+jobs:
+  quota:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar cuota de SerpAPI
+        env:
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+        run: |
+          curl -s "https://serpapi.com/account?api_key=${SERPAPI_API_KEY}" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Plan:', d.get('plan_name')); print('Renovacion:', d.get('plan_renewal_date')); print('Busquedas usadas este mes:', d.get('this_month_usage')); print('Busquedas restantes este mes:', d.get('plan_searches_left')); print('Busquedas restantes total:', d.get('total_searches_left'))"
