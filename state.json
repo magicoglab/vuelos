@@ -1,14 +1,14 @@
 {
   "EZE-MIA diciembre": {
     "last_price": 947.0,
-    "last_checked_at": "2026-09-17T17:56:58.687553+00:00",
+    "last_checked_at": "2026-09-17T17:57:55.586765+00:00",
     "last_notified_at": null,
     "last_notified_price": null
   },
   "AEP-BRC solo ida": {
     "last_price": 62.0,
-    "last_checked_at": "2026-09-17T17:56:58.687553+00:00",
-    "last_notified_at": null,
-    "last_notified_price": null
+    "last_checked_at": "2026-09-17T17:57:55.586765+00:00",
+    "last_notified_at": "2026-09-17T17:57:55.586765+00:00",
+    "last_notified_price": 62.0
   }
 }
