@@ -1,0 +1,30 @@
+# Configuracion del vigilante de vuelos (SerpAPI Google Flights)
+# Este archivo va al repo: NO pongas claves aca.
+# Las claves van como Secrets de GitHub (ver instrucciones).
+
+currency: USD          # Moneda de los precios (USD)
+language: es           # Idioma de la busqueda
+country: ar            # Pais/region de la busqueda
+
+# Valores por defecto para todos los checks. Se pueden sobreescribir en cada uno.
+defaults:
+  adults: 1
+  cabin: economy          # economy | premium_economy | business | first
+  renotify_drop_pct: 5    # Avisar de nuevo si el precio baja este % respecto al ultimo aviso
+  renotify_hours: 24      # Avisar de nuevo pasado este tiempo, aunque no baje
+
+checks:
+  - name: EZE-MIA diciembre
+    from: EZE
+    to: MIA
+    departure_date: 2026-12-10
+    return_date: 2026-12-20   # borra esta linea para solo ida
+    threshold: 700
+    # adults: 1
+    # cabin: economy
+
+  - name: AEP-BRC solo ida
+    from: AEP
+    to: BRC
+    departure_date: 2026-11-05
+    threshold: 90
