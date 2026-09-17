@@ -2,7 +2,7 @@ name: Check flight prices
 
 on:
   schedule:
-    # Cada 2 hs de 9:00 a 22:00 (hora argentina, UTC-3). No corre de noche.
+    # Cada 2 hs entre las 9:00 y las 21:00 (hora argentina, UTC-3). No corre de noche.
     # Hora ARG: 9,11,13,15,17,19,21  ->  UTC: 12,14,16,18,20,22,0
     # 7 corridas/dia x 30 = ~210 busquedas/mes (plan free: 250/mes).
     # Cada corrida gasta 1 busqueda por cada ruta del config.yml.
