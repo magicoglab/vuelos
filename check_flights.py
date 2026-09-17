@@ -152,6 +152,11 @@ def build_message(check: dict, price: float, prev_price: float | None, data: dic
     ]
     if check.get("return_date"):
         lines.append(f"Vuelta: {check['return_date']}")
+    if check.get("depart_after"):
+        window = f"desde {check['depart_after']}"
+        if check.get("depart_before"):
+            window += f" hasta {check['depart_before']}"
+        lines.append(f"Salida {window}")
     lines.append(f"Precio actual: <b>{fmt(price, currency)}</b>")
     lines.append(f"Umbral: {fmt(float(check['threshold']), currency)}")
     if prev_price is not None:
