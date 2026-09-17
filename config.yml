@@ -20,4 +20,4 @@ checks:
     to: BRU,CRL              # Bruselas: BRU (Zaventem) + CRL (Charleroi)
     departure_date: 2027-03-14
     depart_after: "13:00"    # solo vuelos que salgan desde las 13:00 (1 PM)
-    threshold: 99            # avisa si el precio es menor a USD 100
+    threshold: 140           # TEMPORAL: validar que llegue el aviso (volver a 99 despues)
